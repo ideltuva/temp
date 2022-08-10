@@ -1,0 +1,24 @@
+{
+  "name": "fe-intern-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dead-server --port=3333 --host=localhost",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturasKi/FE-intern-task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturasKi/FE-intern-task/issues"
+  },
+  "homepage": "https://github.com/ArturasKi/FE-intern-task#readme",
+  "devDependencies": {
+    "dead-server": "^1.0.6"
+  }
+}

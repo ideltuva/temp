@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRONT-END-TASK</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <main>
+        <section class="leftside">
+            <div class="left-col">
+                <div id="cards"></div>
+            </div>
+        </section>
+        <section class="rightside">
+            <div class="right-col">
+                <div class="photo-container">
+                    <div id="info"></div>
+                    <img class="img" id="imgBox" src="https://picsum.photos/id/0/5616/3744" alt="#" onContextMenu="return false;">
+                    <div class="pagination">
+                        <ul id="pagination"></ul>
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <div>
+                        <label>Grayscale</label>
+                        <input class="inp-checkbox" id="check" type="checkbox">
+                    </div>
+                    <div>
+                        <label>Blur</label>
+                        <input class="slider" id="slider" type="range" min="0" max="100" value="0">
+                        <span id="value">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./js/script.js" defer></script>
+    <!-- <script src="./js/pagination.js"></script> -->
+</body>
+</html>
