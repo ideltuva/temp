@@ -1,11 +1,13 @@
 let page = 1;
 let DATA;
+let allPages;
 // FETCH PHOTOS AND MAP LIST IN COLUMN
 fetch("https://picsum.photos/v2/list")
   .then((res) => res.json())
   .then((data) => {
     window.DATA = data;
-    console.log("data", window.DATA);
+    window.allPages = data.length;
+    element(1);
     let dataList = "";
     let dataInfoInitial = `
         <div class="info">
@@ -40,7 +42,7 @@ function pickPhoto(smallImg) {
             </div>
             `;
       document.getElementById("info").innerHTML = dataInfo;
-      console.log(dataInfo);
+      // console.log(dataInfo);
     }
   }
 }
@@ -91,9 +93,11 @@ function imageFilters() {
 
 // PAGINATION
 let ul = document.querySelector("ul");
-let allPages = 30;
+//let allPages = 30;
 
-function element(allPages, page) {
+function element(page) {
+  console.log('allPages:', window.allPages);
+  console.log('data:', window.DATA);
   let li = "";
   let beforePages = page - 1;
   let afterPages = page + 1;
@@ -102,13 +106,13 @@ function element(allPages, page) {
   window.page = page - 1;
 
   if (page > 1) {
-    li += `<li class="btn" onclick="element(allPages, ${
+    li += `<li class="btn" onclick="element(${
       page - 1
     })"><i class="fa fa-angle-left"></i></li>`;
   }
 
   for (let pageLength = beforePages; pageLength <= afterPages; pageLength++) {
-    if (pageLength > allPages) {
+    if (pageLength > window.allPages) {
       continue;
     }
     if (pageLength === 0) {
@@ -119,17 +123,15 @@ function element(allPages, page) {
     } else {
       liActive = "";
     }
-    li += `<li class="num ${liActive}" onclick="element(allPages, ${
+    li += `<li class="num ${liActive}" onclick="element(${
       page + 1
     })"><span>${pageLength}</span></li>`;
   }
-  if (page < allPages) {
-    li += `<li class="btn" onclick="element(allPages, ${
+  if (page < window.allPages) {
+    li += `<li class="btn" onclick="element(${
       page + 1
     })"><i class="fa fa-angle-right"></i></li>`;
   }
   document.getElementById("pagination").innerHTML = li;
-  console.log(li);
+  // console.log(li);
 }
-
-element(allPages, 1);
