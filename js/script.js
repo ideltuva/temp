@@ -34,7 +34,6 @@ function pickPhoto(smallImg) {
   document.getElementById("info").innerHTML = dataInfo;
 
   let galleryItem = window.DATA.find(rec => rec.download_url === fullImg.src);
-  console.log('gallery item:', galleryItem);
   dataInfo = `
         <div class="info">
             <p>Author: <b>${galleryItem.author}</b></p>
