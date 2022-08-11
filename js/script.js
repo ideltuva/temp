@@ -1,7 +1,23 @@
 let page = 1;
 let DATA;
 let allPages;
-// FETCH PHOTOS AND MAP LIST IN COLUMN
+let ul = document.querySelector("ul");
+
+let slider = document.getElementById("slider");
+let output = document.getElementById("value");
+let pagination = document.getElementById("pagination");
+let img = document.getElementById("imgBox");
+let checkboxGray = document.getElementById("check");
+
+output.innerHTML = slider.value;
+slider.addEventListener("input", imageFilters);
+checkboxGray.addEventListener("click", imageFilters);
+pagination.addEventListener("click", renderImage);
+
+slider.oninput = function () {
+  output.innerHTML = this.value;
+};
+
 fetch("https://picsum.photos/v2/list")
   .then((res) => res.json())
   .then((data) => {
@@ -23,9 +39,8 @@ fetch("https://picsum.photos/v2/list")
     });
     document.getElementById("cards").innerHTML = dataList;
   })
-  .catch((error) => console.log("ERROR"));
+  .catch((error) => console.log("Error:", error));
 
-// ENLARGE PICKED PHOTO FROM LIST
 function pickPhoto(smallImg) {
   let fullImg = document.getElementById("imgBox");
   fullImg.src = smallImg.src;
@@ -41,26 +56,7 @@ function pickPhoto(smallImg) {
         </div>
         `;
   document.getElementById("info").innerHTML = dataInfo;
-      // console.log(dataInfo);
 }
-
-// IMAGE FILTERS
-let slider = document.getElementById("slider");
-let output = document.getElementById("value");
-let pagination = document.getElementById("pagination");
-let img = document.getElementById("imgBox");
-let checkboxGray = document.getElementById("check");
-
-// input sliderio 'value=0' yra prilyginamas span tag'e užduotai reikšmei (0);
-output.innerHTML = slider.value;
-
-slider.oninput = function () {
-  output.innerHTML = this.value;
-};
-
-slider.addEventListener("input", imageFilters);
-checkboxGray.addEventListener("click", imageFilters);
-pagination.addEventListener("click", renderImage);
 
 function renderImage() {
   let dataInfo = "";
@@ -89,12 +85,7 @@ function imageFilters() {
 }
 
 // PAGINATION
-let ul = document.querySelector("ul");
-//let allPages = 30;
-
 function element(page) {
-  console.log('allPages:', window.allPages);
-  console.log('data:', window.DATA);
   let li = "";
   let beforePages = page - 1;
   let afterPages = page + 1;
@@ -130,5 +121,4 @@ function element(page) {
     })"><i class="fa fa-angle-right"></i></li>`;
   }
   document.getElementById("pagination").innerHTML = li;
-  // console.log(li);
 }
