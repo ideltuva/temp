@@ -33,18 +33,15 @@ function pickPhoto(smallImg) {
   let dataInfo = "";
   document.getElementById("info").innerHTML = dataInfo;
 
-  for (let i = 0; i < window.DATA.length; i++) {
-    if (fullImg.src === window.DATA[i].download_url) {
-      dataInfo = `
-            <div class="info">
-                <p>Author: <b>${window.DATA[i].author}</b></p>
-                <p>Dimensions: <b>${window.DATA[i].width} x ${window.DATA[i].height}</b></p>
-            </div>
-            `;
-      document.getElementById("info").innerHTML = dataInfo;
+  let galleryItem = window.DATA.filter(rec => rec.download_url === fullImg.src)[0];
+  dataInfo = `
+        <div class="info">
+            <p>Author: <b>${galleryItem.author}</b></p>
+            <p>Dimensions: <b>${galleryItem.width} x ${galleryItem.height}</b></p>
+        </div>
+        `;
+  document.getElementById("info").innerHTML = dataInfo;
       // console.log(dataInfo);
-    }
-  }
 }
 
 // IMAGE FILTERS
